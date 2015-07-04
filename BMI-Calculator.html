@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+	<head>
+
+		<title>Calculadora IMC</title>
+
+		<meta charset="utf-8"> 
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	</head>
+	
+	<body>
+ 
+		<div class="container">
+
+			<div class="jumbotron text-center">
+			
+				<h1>Calculadora IMC</h1>
+				<p class="lead">
+				
+				<form id="div01" name="calculate">
+        	
+					<fieldset>
+            	
+						<label>
+							Altura (m)
+							<br/>
+							<input id="height" type="text" name="Altura" class="form-control">
+						</label>						
+						<br /><br />
+
+						<label class="control-label">
+							Peso (kg)
+							<br/>
+							<input id="weight" type="text" name="Peso" class="form-control">
+						</label>                
+						<br /><br />
+						<button type="button" onclick="Function1()" class="btn btn-default">Calcular</button>&nbsp;
+						<button type="button" onclick="resetForm()" class="btn btn-default">Limpar</button>
+			
+					</fieldset>
+        
+				</form>
+
+				</p>	
+				<div id="div02">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th class="text-center">IMC</th>
+							<th class="text-center">Situação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td> <span id="Result"></span> </td>
+							<td> <span id="bmi"></span> </td>
+						</tr>					
+					</tbody>
+				</table>
+				<span class="navbar-left"><button type="button" onclick="Function2()" class="btn btn-default">Voltar</button></span>
+				<br><br>
+				</div>
+	
+				<script type="text/javascript">
+				
+					var display2 = document.getElementById('div02').style.display = 'none';
+	
+					function Function1() 
+					{
+	
+						x = document.calculate;
+
+						if (x.height.value == "")
+						{
+							alert("O campo " + x.height.name + " deve ser preenchido.");
+							x.height.focus();
+							return false;
+						}
+						
+						if (isNaN(x.height.value.replace(',','.')))
+						{
+							alert("O campo " + x.height.name + " deve conter apenas numeros.");
+							x.height.focus();
+							return false;
+						}			
+						
+						if (x.weight.value == "")
+						{
+							alert("O campo " + x.weight.name + " deve ser preenchido.");
+							x.weight.focus();
+							return false;
+						}
+
+						if (isNaN(x.weight.value.replace(',','.')))
+						{
+							alert("O campo " + x.weight.name + " deve conter apenas numeros.");
+							x.weight.focus();
+							return false;
+						}		
+
+						
+						var display = document.getElementById('div01').style.display;	
+
+						if(display == "none")
+							document.getElementById('div01').style.display = 'block';
+						else
+							document.getElementById('div01').style.display = 'none';
+				
+						if(display2 == "none")		
+							document.getElementById('div02').style.display = 'block';
+						else
+							document.getElementById('div02').style.display = 'none';
+		
+
+						var height = document.getElementById("height").value.replace(',','.');
+						var weight = document.getElementById("weight").value.replace(',','.');
+
+						var y1 = parseFloat(height) * parseFloat(height);
+						var y2 = parseFloat(weight) / y1;
+	
+						var Result = y2;
+	
+						var bmi;
+	
+						if (Result < 17)
+						{
+							bmi = "Muito abaixo do peso";
+						}
+						else if (Result >= 17 && Result <= 18.49)
+						{
+							bmi = "Abaixo do peso";
+						}
+						else if (Result >= 18.5 && Result <= 24.99)
+						{
+							bmi = "Peso normal";
+						}
+						else if (Result >= 25 && Result <= 29.99)
+						{
+							bmi = "Acima do peso";
+						}
+						else if (Result >= 30 && Result <= 34.99)
+						{
+							bmi = "Obesidade I";
+						}
+						else if (Result >= 35 && Result <= 39.99)
+						{
+							bmi = "Obesidade II (severa)";
+						}					
+						else if (Result >= 40)
+						{
+							bmi = "Obesidade III (mórbida)";
+						}
+						
+						Result = parseInt(Result);
+					
+						document.getElementById("bmi").innerHTML = bmi;	
+						document.getElementById("Result").innerHTML = Result;	
+
+					}
+					
+					function Function2() 
+					{
+						var display = document.getElementById('div01').style.display;	
+
+						if(display == "none")
+							document.getElementById('div01').style.display = 'block';
+						else
+							document.getElementById('div01').style.display = 'none';
+				
+						if(display2 == "none")		
+							document.getElementById('div02').style.display = 'none';
+						else
+							document.getElementById('div02').style.display = 'block';
+					}
+
+					function resetForm() 
+					{
+						document.getElementById("div01").reset();
+					}
+					
+				</script>	
+				
+			</div>
+			
+		</div> <!-- /container -->
+
+	</body>
+
+</html>
