@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+	<head>
+
+		<title>Standard Calculator</title>
+
+		<meta charset="utf-8"> 
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		
+		<style type="text/css">
+		
+			table tr td { padding: 7px; border: 0px;}
+			
+			.style-button { box-shadow: 1px 1px 1px #999; width:50px; height: 40px; text-align: center;}
+			
+		</style>
+
+	</head>
+	
+	<body>
+ 
+		<div class="container">
+
+			<center>
+			<form>
+			
+				<table border="2px">
+
+					<thead bgcolor="#D3D3D3">
+						<tr>
+							<td colspan="5" align="center"><strong style="font-size:15px; font-family: MS Sans serif;">Standard Calculator</strong></td>
+						</tr>
+						<tr>
+							<fieldset>            	
+								<label>
+									<td colspan="5"><input type="text" name="display" class="form-control"></td>
+								</label>
+							</fieldset>
+						</tr>
+					</thead>
+					<tbody bgcolor="#D3D3D3">
+						<tr>
+							<td><input class="btn btn-primary style-button" type="button" value="7" onClick= "Function1(this.form.display, '7')"></td>
+							<td><input class="btn btn-primary style-button" type="button" value="8" onClick= "Function1(this.form.display, '8')"></td>
+							<td><input class="btn btn-primary style-button" type="button" value="9" onClick= "Function1(this.form.display, '9')" ></td>
+							<td><input class="btn btn-warning style-button" type="button" value="DEL" onClick= "Del(this.form.display)"></td>
+							<td><input class="btn btn-warning style-button" type="button" value="AC" onClick= "this.form.display.value = 0"></td>
+						</tr>
+						<tr>
+							<td><input class="btn btn-primary style-button" type="button" value="4" onClick= "Function1(this.form.display, '4')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="5" onClick= "Function1(this.form.display, '5')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="6" onClick= "Function1(this.form.display, '6')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="*" onClick= "Function1(this.form.display, '*')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="/" onClick= "Function1(this.form.display, '/')"></td>						
+						</tr>
+						<tr>
+							<td><input class="btn btn-primary style-button" type="button" value="1" onClick= "Function1(this.form.display, '1')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="2" onClick= "Function1(this.form.display, '2')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="3" onClick= "Function1(this.form.display, '3')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="+" onClick= "Function1(this.form.display, '+')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="-" onClick= "Function1(this.form.display, '-')"></td>						
+						</tr>
+						<tr>
+							<td><input class="btn btn-primary style-button" type="button" value="0" onClick= "Function1(this.form.display, '0')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="." onClick= "Function1(this.form.display, '.')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value="(" onClick= "Function1(this.form.display, '(')" ></td>
+							<td><input class="btn btn-primary style-button" type="button" value=")" onClick= "Function1(this.form.display, ')')" ></td>
+							<td><input class="btn btn-success style-button" type="button" value="=" onClick= "{ Result(this.form) }"></td>				
+						</tr>
+					</tbody>
+
+				</table>
+
+			</form>
+			</center>
+
+			<script type="text/javascript">
+
+				function Function1(input, character)
+				{
+					if(input.value == null || input.value == "0")
+					{
+						input.value = character;
+					}
+					else
+					{
+						input.value += character;
+					}
+				}
+
+				function Result(form)
+				{
+        			form.display.value = eval(form.display.value);
+				}
+				
+				function Del(input) 
+				{
+					input.value = input.value.substring(0, input.value.length - 1);
+				}
+
+			</script>
+
+		</div> <!-- /container -->
+
+	</body>
+
+</html>
